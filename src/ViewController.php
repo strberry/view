@@ -1,22 +1,12 @@
 <?php
 
-class View {
+class ViewController implements IController {
 
     private string $fileName;
-    private array $pageVars;
 
-    public function __construct(string $fileName, array $pageVars)
+    public function __construct(string $fileName)
     {
         $this->fileName = $fileName;
-        $this->pageVars = $pageVars;
-    }
-
-    public function getFileName() : string {
-        return $this->fileName;
-    }
-
-    public function getPageVars() : array {
-        return $this->pageVars;
     }
 
     private function renderTemplateVars(string $file, $pageVars) : string {
@@ -35,7 +25,7 @@ class View {
 
         return $rendered;
     }
-    
+
     private function renderComponents(string $templateVarsRendered) : string
     {
         $rendered = $templateVarsRendered;
@@ -61,11 +51,9 @@ class View {
         return $rendered;
     }
 
-    public function __toString(): string
+    function respond($data): string
     {
-        $templateVarsRendered = $this->renderTemplateVars($this->fileName, $this->pageVars);
+        $templateVarsRendered = $this->renderTemplateVars($this->fileName, $data);
         return $this->renderComponents($templateVarsRendered);
     }
-
-
 }
