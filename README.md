@@ -1,4 +1,4 @@
-# 🍓 Extension: Input/Output
+# 🍓 Extension: Simple Template Engine
 This is a simple template engine for [strawberry](https://github.com/elderguardian/strawberry), but you could easily use it in other frameworks.
 ## Installation
 ```
